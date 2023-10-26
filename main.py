@@ -40,7 +40,7 @@ def curva(graus):
     mover.turn(graus)
 
 def subir():
-    sobe.run_time(10000,850, wait=False)
+    sobe.run_time(10000,850,)
 
 def descer():
     sobe.run_time(-1000, 850,)
@@ -100,7 +100,6 @@ try:
 
     andar(-70, 300)
     curva(-90)
-    descer()
 
     # Início das rotinas
 
@@ -154,6 +153,59 @@ try:
         andar(35)
         curva(90)
         andar(-110,320)
+    
+    elif sequencia == 'GRY':
+        segueAte(Color.RED)
+        andar(-3)
+        curva(-85)
+        descer()
+        andar(18)
+        fecha()
+        andar(-7)
+        curva(85)
+        andar(-26)
+        subir()
+        curva(90)
+        andar(50)
+        curva(-90)
+        andar(15)
+        descer()
+        abre()
+        subir()
+        andar(-10)
+        curva(90)
+        andar(-33)
+        curva(-90)
+        segueAte(Color.RED)
+        andar(-3) 
+        curva(85)
+        descer()
+        segueAte(Color.YELLOW) # pegar arvore amarela
+        andar(-3)
+        fecha()
+        sobe()
+        andar(-11)
+        curva(95)
+        andar(30)
+        curva(-90)
+        andar(10)
+        curva(-90)
+        andar(5)
+        descer()
+        abre()
+        sobe()
+        andar(-5)
+        curva(90)
+        segueAte(Color.BLACK)
+        curva(90)
+        segueAte(Color.RED)
+        fecha()
+        sobe()
+        andar(-25)
+        curva(-90)
+        andar(-80, 180)
+
+
 
 
 finally:
