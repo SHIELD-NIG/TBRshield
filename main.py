@@ -46,7 +46,7 @@ def descer():
     sobe.run_time(-1000, 850,)
 
 def abre():
-    garra.run_time(350, 1000)
+    garra.run_time(320, 800)
 
 def fecha():
      garra.run_time(-1000, 1000)
@@ -111,6 +111,7 @@ try:
         andar(-30)
         curva(90)
         segueAte(Color.BLACK)
+        andar(12)
         curva(-90)
         andar(10)
         descer()
@@ -118,10 +119,10 @@ try:
         subir()
         wait(500)
         andar(-15)
-        curva(-90)
-        andar(34)
         curva(90)
-        andar(31)
+        andar(-34)
+        curva(-90)
+        andar(32.2)
         descer()
         curva(90)
         segueAte(Color.YELLOW)
@@ -140,9 +141,9 @@ try:
         subir()
         wait(500)
         andar(-20)
-        curva(90)
-        andar(30)
-        curva(90)
+        curva(-90)
+        andar(-30)
+        curva(-90)
         descer()
         segueAte(Color.RED,250)
         curva(-90)
@@ -154,7 +155,6 @@ try:
         andar(35)
         curva(90)
         andar(-110,320)
-
 
 finally:
     print('O programa foi executado em: ', tempo.time()/1000, 's')
