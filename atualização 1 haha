@@ -425,12 +425,59 @@ try:
         andar(-120, 300)
 
 
-
+    if sequencia == 'GRY' or sequencia == 'GYR':
+        wait(300)
+        andar(4)
+        curva(-90)
+        segueAte(Color.GREEN)
+        wait(100)
+        andar(22)
+        plaqueta = sensordir.color()
+        andar(-6)
+        sobe.run_time(-130,900)
+        print(plaqueta)
+        curva(-90)
+        andar(-10)
+        curva(-90)
+        curva(45)
+        andar(15)
+        curva(-45)
+        andar(30)
+        segueAte(Color.GREEN)
+        wait(100)
+        andar(17)
+        curva(-45)
+        andar(-5)
+        curva(135)
+        subir()
+        andar(22)
+        curva(90)
+        andar(21)
+        descer()
+        abre()
+        subir()
+        andar(-12)
+        fecha()
+        curva(-90)
+        andar(24)
+        curva(-70)
+        curva(135)
+        andar(35)
+        curva(30)
+        andar(15)
+        wait(200)
+        segueAte(Color.GREEN)
+        wait(200)
+        if cor3 != seleciona(plaqueta):
+            andar(20)
+            andar(-30)
+        else:
+            andar(5)
+            curva(-45)
+            andar(10)
+            andar(-10)
+            curva(-135)
+            andar(26.5)
         
-        
-        
-
-
-     
 finally:
     print('O programa foi executado em: ', tempo.time()/1000, 's')
