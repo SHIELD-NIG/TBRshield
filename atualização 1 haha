@@ -13,8 +13,8 @@ direito    = Motor(Port.B)
 garra      = Motor(Port.C, Direction.COUNTERCLOCKWISE)
 sobe       = Motor(Port.D)
 mover      = GyroDriveBase(esquerdo, direito, 68.8, 113)
-sensoresq  = ColorSensor(Port.A)
-sensordir  = ColorSensor(Port.E)
+sensoresq  = ColorSensor(Port.E)
+sensordir  = ColorSensor(Port.A)
 
 
 Color.YELLOW = Color(h=20,s=72,v=69)
@@ -34,7 +34,7 @@ def seleciona(cor):
     if cor == Color.YELLOW:
         return("Y")  
 
-def andar(distancia, velocidade=315):
+def andar(distancia, velocidade=240):
     mover.settings(velocidade, 900, 203, 913)
     mover.straight(distancia*10)
 
@@ -53,7 +53,7 @@ def abre():
 def fecha():
      garra.run_time(-1000, 1000)
 
-def segueAte(cor, velocidade=240):
+def segueAte(cor, velocidade=200):
     while (sensordir.color() != cor) and (sensoresq.color() != cor):
         mover.drive(velocidade, 0)
     mover.stop()
@@ -171,7 +171,7 @@ try:
         curva(85)
         andar(-26)
         curva(90)
-        andar(44)
+        andar(42)
         curva(-90)
         andar(15)
         descer()
@@ -192,15 +192,15 @@ try:
         curva(-85)
         andar(-36)
         curva(90)
-        andar(34)
+        andar(32)
         curva(90)
-        andar(17)
+        andar(20)
         descer()
         abre()
         subir() # entregou arvore amarela
-        andar(-5)
+        andar(-10)
         curva(-90)
-        andar(-40)
+        andar(-35)
         curva(-90)
         segueAte(Color.RED)
         andar(-6)
@@ -210,7 +210,7 @@ try:
         subir() # pegou arvore vermelha
         andar(-35)
         curva(-90)
-        andar(-120, 800)
+        andar(-120, 315)
 
     elif sequencia == 'GYR':
         segueAte(Color.RED)
@@ -235,14 +235,14 @@ try:
         andar(-3)
         curva(-85)
         descer()
-        andar(16)
+        andar(10)
         fecha()
         subir() # pegou arvore verde
         andar(-8)
         curva(85)
         andar(-26)
         curva(90)
-        andar(47)
+        andar(44)
         curva(-90)
         andar(15)
         descer()
@@ -427,7 +427,7 @@ try:
 
     if sequencia == 'GRY' or sequencia == 'GYR':
         wait(300)
-        andar(4)
+        andar(6)
         curva(-90)
         segueAte(Color.GREEN)
         wait(100)
@@ -440,7 +440,7 @@ try:
         andar(-10)
         curva(-90)
         curva(45)
-        andar(15)
+        andar(21)
         curva(-45)
         andar(30)
         segueAte(Color.GREEN)
@@ -450,7 +450,7 @@ try:
         andar(-5)
         curva(135)
         subir()
-        andar(22)
+        andar(19)
         curva(90)
         andar(21)
         descer()
@@ -462,9 +462,9 @@ try:
         andar(24)
         curva(-70)
         curva(135)
-        andar(35)
+        andar(25)
         curva(30)
-        andar(15)
+        andar(20)
         wait(200)
         segueAte(Color.GREEN)
         wait(200)
@@ -472,11 +472,11 @@ try:
             andar(20)
             andar(-30)
         else:
-            andar(5)
-            curva(-45)
+            andar(3)
+            curva(-60)
             andar(10)
             andar(-10)
-            curva(-135)
+            curva(-120)
             andar(26.5)
         
 finally:
