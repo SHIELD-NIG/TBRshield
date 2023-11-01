@@ -157,7 +157,7 @@ try:
         curva(-90)
         andar(35)
         curva(90)
-        andar(-110,800)
+        andar(-150,300)
     
     elif sequencia == 'GRY':
         segueAte(Color.RED)
@@ -210,7 +210,7 @@ try:
         subir() # pegou arvore vermelha
         andar(-35)
         curva(-90)
-        andar(-120, 315)
+        andar(-150, 315)
 
     elif sequencia == 'GYR':
         segueAte(Color.RED)
@@ -228,6 +228,8 @@ try:
         abre()
         subir() # entregou arvore vermelha
         andar(-5)
+        andar(10)
+        andar(-10)
         curva(-90)
         andar(-40)
         curva(-90)
@@ -235,14 +237,14 @@ try:
         andar(-3)
         curva(-85)
         descer()
-        andar(10)
+        andar(9)
         fecha()
         subir() # pegou arvore verde
         andar(-8)
         curva(85)
         andar(-26)
         curva(90)
-        andar(44)
+        andar(43)
         curva(-90)
         andar(15)
         descer()
@@ -262,9 +264,9 @@ try:
         subir() # pegou arvore amarela
         andar(-10)
         curva(-85)
-        andar(-30)
+        andar(-35)
         curva(-90)
-        andar(-120)
+        andar(-150, 300)
 
     elif sequencia == 'YGR':
         segueAte(Color.RED)
@@ -316,7 +318,7 @@ try:
         curva(90)
         andar(-35)
         curva(-90)
-        andar(-120, 300)
+        andar(-150, 300)
 
     elif sequencia == 'RYG':
         segueAte(Color.RED)
@@ -325,11 +327,11 @@ try:
         andar(8)
         fecha()
         subir() # pegou arvore vermelha
-        andar(-20)
+        andar(-25)
         curva(90)
-        andar(35)
+        andar(36)
         curva(-90)
-        andar(5)
+        andar(15)
         descer()
         abre()
         subir() # entregou arvore vermelha
@@ -349,7 +351,7 @@ try:
         curva(90)
         andar(30)
         curva(90)
-        andar(20)
+        andar(25)
         descer()
         abre()
         subir() # entregou arvore verde
@@ -368,7 +370,7 @@ try:
         curva(-90)
         andar(-35)
         curva(-90)
-        andar(-100, 300)
+        andar(-150, 300)
 
     elif sequencia == 'YRG':
         segueAte(Color.RED)
@@ -422,25 +424,85 @@ try:
         subir() # pegou arvore vermelha
         andar(-30)
         curva(-90)
-        andar(-120, 300)
+        andar(-150, 300)
 
 
     if sequencia == 'GRY' or sequencia == 'GYR':
         wait(300)
-        andar(6)
+        andar(8) 
         curva(-90)
         segueAte(Color.GREEN)
         wait(100)
-        andar(22)
+        andar(21.2) #vai ate a bandeira
+        wait(300)
         plaqueta = sensordir.color()
+        wait(200)
+        andar(-5)
+        sobe.run_time(-120,900) 
+        print(plaqueta)
+        curva(-90) #levanta a bandeira
+        andar(-10)
+        curva(-90) #rabiscada
+        curva(45)
+        andar(23) #vai indo pro lado
+        curva(-45) #se ajeita
+        andar(30)
+        segueAte(Color.GREEN) 
+        wait(100)
+        andar(19) #vai ate a segunda bandeira
+        curva(-45) #arma a bandeira
+        andar(-5)
+        curva(135) #vira pra entregar a arvore
+        subir() #a subidinha só de segurançça
+        andar(18) 
+        curva(90)
+        andar(22) #alinha na area
+        descer() 
+        abre()
+        subir() #entrega
+        andar(-12)
+        fecha()
+        curva(-90)
+        andar(24)
+        curva(-70) #desce a amarela
+        curva(135)
+        andar(25)
+        curva(30)
+        andar(20)
+        wait(200)
+        segueAte(Color.GREEN) 
+        wait(200)
+        if (plaqueta == Color.GREEN) or (plaqueta == Color.NONE):
+            andar(-15)
+        elif cor3 != seleciona(plaqueta):
+            andar(20)
+            andar(-30)
+        else:
+            andar(3)
+            curva(-60)
+            andar(10)
+            andar(-9)
+            curva(-120)
+            andar(26.5)
+
+    if sequencia == 'YRG' or sequencia == 'RYG':
+        wait(300)
+        andar(7)
+        curva(90)
+        segueAte(Color.GREEN)
+        wait(100)
+        andar(22)
+        wait(300)
+        plaqueta = sensordir.color()
+        wait(200)
         andar(-6)
-        sobe.run_time(-130,900)
+        sobe.run_time(-115,900)
         print(plaqueta)
         curva(-90)
         andar(-10)
         curva(-90)
         curva(45)
-        andar(21)
+        andar(17)
         curva(-45)
         andar(30)
         segueAte(Color.GREEN)
@@ -451,34 +513,34 @@ try:
         curva(135)
         subir()
         andar(18)
-        curva(90)
+        curva(-90)
         andar(21)
         descer()
         abre()
         subir()
         andar(-12)
         fecha()
-        curva(-90)
+        curva(90)
         andar(24)
-        curva(-70)
-        curva(135)
+        curva(70)
+        curva(-135)
         andar(25)
-        curva(30)
+        curva(-30)
         andar(20)
         wait(200)
         segueAte(Color.GREEN)
         wait(200)
-        if plaqueta == Color.GREEN:
-            andar(-10)
+        if (plaqueta == Color.GREEN) or (plaqueta == Color.NONE):
+            andar(-15)
         elif cor3 != seleciona(plaqueta):
             andar(20)
             andar(-30)
         else:
             andar(3)
-            curva(-60)
+            curva(60)
             andar(10)
-            andar(-10)
-            curva(-120)
+            andar(-9)
+            curva(120)
             andar(26.5)
         
 finally:
