@@ -450,7 +450,7 @@ try:
         andar(-5)
         curva(135)
         subir()
-        andar(19)
+        andar(18)
         curva(90)
         andar(21)
         descer()
@@ -468,7 +468,9 @@ try:
         wait(200)
         segueAte(Color.GREEN)
         wait(200)
-        if cor3 != seleciona(plaqueta):
+        if plaqueta == Color.GREEN:
+            andar(-10)
+        elif cor3 != seleciona(plaqueta):
             andar(20)
             andar(-30)
         else:
