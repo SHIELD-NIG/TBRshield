@@ -1,10 +1,16 @@
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
-from pybricks.robotics import GyroDriveBase
+from pybricks.robotics import DriveBase
 from pybricks.tools import wait, StopWatch
 
 hub = PrimeHub()
+
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import GyroDriveBase
+from pybricks.tools import wait, StopWatch
 
 tempo      = StopWatch()
 hub        = PrimeHub()
@@ -17,14 +23,15 @@ sensoresq  = ColorSensor(Port.E)
 sensordir  = ColorSensor(Port.A)
 
 
-Color.YELLOW = Color(h=20,s=72,v=69)
-Color.RED    = Color(h=352,s=83,v=48)
-Color.GREEN  = Color(h=135,s=62,v=52)
-Color.NONE   = Color(h=220,s=19,v=20)
+Color.YELLOW = Color(h=20,s=72,v=70)
+Color.RED    = Color(h=351,s=84,v=48)
+Color.GREEN  = Color(h=135,s=65,v=51)
+Color.NONE   = Color(h=210,s=22,v=22)
 Color.BLACK  = Color(h=330,s=17,v=15)
+Color.WHITE  = Color(h=208,s=27, v=88)
 
-sensoresq.detectable_colors((Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
-sensordir.detectable_colors((Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
+sensoresq.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
+sensordir.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
 
 plaquetas = [Color.RED, Color.YELLOW]
 def seleciona(cor):
@@ -167,14 +174,14 @@ try:
         andar(-3)
         curva(-85)
         descer()
-        andar(12)
+        andar(13)
         fecha()
         subir() # pegou arvore verde
         andar(-7)
         curva(85)
         andar(-26)
         curva(90)
-        andar(42)
+        andar(44)
         curva(-90)
         andar(15)
         descer()
@@ -184,6 +191,7 @@ try:
         curva(0)
         andar(-5)
         andar(7)
+        mover.stop()
         mover.reset()
         andar(-10)
         curva(90)
@@ -210,11 +218,12 @@ try:
         curva(0)
         andar(-7)
         andar(10)
+        mover.stop()
         mover.reset()
         curva(0)
         andar(-20)
         curva(-90)
-        andar(-35)
+        andar(-37)
         curva(-90)
         segueAte(Color.RED)
         andar(-6)
@@ -244,6 +253,7 @@ try:
         mover.reset()
         andar(-5)
         andar(10)
+        mover.stop()
         mover.reset()
         curva(0)
         andar(-10)
@@ -254,19 +264,20 @@ try:
         andar(-3)
         curva(-85)
         descer()
-        andar(9)
+        andar(11)
         fecha()
         subir() # pegou arvore verde
         andar(-8)
         curva(85)
-        andar(-26)
+        andar(-23)
         curva(90)
-        andar(43)
+        andar(44)
         curva(-90)
         andar(15)
         descer()
         abre()
         subir() #entregou arvore verde
+        mover.stop()
         mover.reset()
         andar(-5)
         andar(10)
@@ -466,14 +477,15 @@ try:
         andar(28)
         curva(90)
         andar(19)
+        mover.stop()
         mover.reset()
         descer()
         abre()
         andar(-2)
         subir()
-        andar(-10)
+        andar(-6.5)
         curva(90)
-        andar(19)
+        andar(23)
         curva(90)
         andar(7.5)
         sobe.run_time(-225,1400)
@@ -485,6 +497,14 @@ try:
         curva(-90)
         subir()
         andar(20)
+        curva(90)
+        andar(-13.5)
+        mover.stop()
+        wait(200)
+        mover.reset()
+        wait(200)
+        andar(6.5)
+        curva(-90)
         segueAte(Color.GREEN)
         andar(23.5)
         wait(300)
@@ -505,7 +525,16 @@ try:
         sobe.run_time(-205,1100)
 
         if plaqueta == cor3:
+            andar(79)
+            andar(-20)
+            curva(-45)
+            andar(20)
+            curva(-45)
             andar(65)
+            andar(-15)
+            segueAte(Color.GREEN)
+            andar(-13)
+            
         else:
             andar(60)
             curva(60)
@@ -517,7 +546,7 @@ try:
             andar(10)
             segueAte(Color.GREEN)
             andar(30)
-            andar(-33)
+            andar(-15)
             segueAte(Color.GREEN)
             andar(-13)
         
