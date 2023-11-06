@@ -27,7 +27,6 @@ sensoresq.detectable_colors((Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, C
 sensordir.detectable_colors((Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
 
 plaquetas = [Color.RED, Color.YELLOW]
-
 def seleciona(cor):
     if cor == Color.RED:
         return("R")
@@ -122,6 +121,7 @@ try:
         descer()
         abre()
         subir() # entrega arvore vermelha
+        mover.reset()
         andar(-15)
         curva(90)
         andar(-34)
@@ -144,6 +144,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore amarela
+        mover.reset()
         andar(-20)
         curva(-90)
         andar(-30)
@@ -166,7 +167,7 @@ try:
         andar(-3)
         curva(-85)
         descer()
-        andar(11)
+        andar(12)
         fecha()
         subir() # pegou arvore verde
         andar(-7)
@@ -179,7 +180,11 @@ try:
         descer()
         abre()
         subir() # entregou arvore verde
+        mover.reset()
         curva(0)
+        andar(-5)
+        andar(7)
+        mover.reset()
         andar(-10)
         curva(90)
         andar(-33)
@@ -195,17 +200,19 @@ try:
         curva(-85)
         andar(-36)
         curva(90)
-        andar(32)
+        andar(34)
         curva(90)
         andar(20)
         descer()
         abre()
         subir() # entregou arvore amarela
+        mover.reset()
         curva(0)
         andar(-7)
         andar(10)
+        mover.reset()
         curva(0)
-        andar(-10)
+        andar(-20)
         curva(-90)
         andar(-35)
         curva(-90)
@@ -234,8 +241,10 @@ try:
         descer()
         abre()
         subir() # entregou arvore vermelha
+        mover.reset()
         andar(-5)
         andar(10)
+        mover.reset()
         curva(0)
         andar(-10)
         curva(-90)
@@ -258,6 +267,10 @@ try:
         descer()
         abre()
         subir() #entregou arvore verde
+        mover.reset()
+        andar(-5)
+        andar(10)
+        mover.reset()
         andar(-10)
         curva(90)
         andar(-33)
@@ -291,6 +304,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore vermelha
+        mover.reset()
         andar(-5)
         curva(-90)
         andar(-40)
@@ -312,6 +326,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore amarela
+        mover.reset()
         andar(-10)
         curva(90)
         andar(-35)
@@ -343,6 +358,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore vermelha
+        mover.reset()
         andar(-10)
         curva(90)
         andar(-35)
@@ -363,6 +379,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore verde
+        mover.reset()
         andar(-10)
         curva(-90)
         andar(-30)
@@ -399,6 +416,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore amarela
+        mover.reset()
         andar(-10)
         curva(90)
         andar(-35)
@@ -420,6 +438,7 @@ try:
         descer()
         abre()
         subir() # entregou arvore verde
+        mover.reset()
         andar(-10)
         curva(-90)
         andar(-40)
@@ -436,8 +455,9 @@ try:
 
 
     if sequencia == 'GRY' or sequencia == 'GYR':
+        mover.reset()
         wait(300)
-        curva(0)
+        mover.reset()
         andar(7) 
         curva(90)
         segueAte(Color.GREEN)
@@ -445,8 +465,8 @@ try:
         curva(90)
         andar(28)
         curva(90)
-        andar(15)
-        curva(0)
+        andar(19)
+        mover.reset()
         descer()
         abre()
         andar(-2)
@@ -479,6 +499,7 @@ try:
         curva(-60)
         andar(-14)
         curva(-30)
+        mover.reset()
         fecha()
         subir()
         sobe.run_time(-205,1100)
