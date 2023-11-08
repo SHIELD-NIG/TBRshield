@@ -1,14 +1,6 @@
 from pybricks.hubs import PrimeHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
-from pybricks.robotics import DriveBase
-from pybricks.tools import wait, StopWatch
-
-hub = PrimeHub()
-
-from pybricks.hubs import PrimeHub
-from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
-from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import GyroDriveBase
 from pybricks.tools import wait, StopWatch
 
@@ -66,9 +58,9 @@ def segueAte(cor, velocidade=200):
         mover.drive(velocidade, 0)
     mover.stop()
 try:
-    curva(90)
-    andar(40)
     curva(-90)
+    andar(-40)
+    curva(90)
     subir()
     andar(-68,350)
     curva(-90)
@@ -363,12 +355,15 @@ try:
         subir() # pegou arvore vermelha
         andar(-25)
         curva(90)
-        andar(36)
+        andar(37)
         curva(-90)
         andar(15)
         descer()
         abre()
         subir() # entregou arvore vermelha
+        andar(-5)
+        andar(7)
+        mover.stop()
         mover.reset()
         andar(-10)
         curva(90)
@@ -390,6 +385,9 @@ try:
         descer()
         abre()
         subir() # entregou arvore verde
+        andar(-5)
+        andar(7)
+        mover.stop()
         mover.reset()
         andar(-10)
         curva(-90)
@@ -549,6 +547,87 @@ try:
             andar(-15)
             segueAte(Color.GREEN)
             andar(-13)
+
+    if sequencia == 'RYG' or sequencia == 'YRG':
+        mover.reset()
+        wait(300)
+        mover.reset()
+        andar(7) 
+        curva(90)
+        segueAte(Color.GREEN)
+        andar(11)
+        curva(90)
+        andar(28)
+        curva(90)
+        andar(19)
+        mover.stop()
+        mover.reset()
+        descer()
+        abre()
+        andar(-2)
+        subir()
+        andar(-6.5)
+        curva(90)
+        andar(23)
+        curva(90)
+        andar(12.5)
+        if sensoresq.color() in plaquetas:
+            plaqueta = seleciona(sensoresq.color())
+        else:
+            plaqueta = seleciona(sensordir.color())
+        print(plaqueta)
+        wait(300)
+        andar(-5)
+        sobe.run_time(-225,1400)
+        curva(-45)
+        andar(-9)
+        curva(-45)
+        andar(17)
+        garra.run_time(100,800,wait=True)
+        curva(-90)
+        subir()
+        andar(20)
+        curva(90)
+        andar(-14.5)
+        mover.stop()
+        wait(200)
+        mover.reset()
+        wait(200)
+        andar(6.5)
+        curva(-90)
+        segueAte(Color.GREEN)
+        andar(18)
+        sobe.run_time(-220,1500)
+        curva(-60)
+        andar(-14)
+        curva(-30)
+        mover.reset()
+        fecha()
+        subir()
+        sobe.run_time(-205,1100)
+        andar(60)
+        curva(60)
+        andar(15)
+        andar(-15)
+        curva(-90)
+        andar(16.5)
+        curva(-60)
+        andar(10)
+        segueAte(Color.GREEN)
+
+        if plaqueta == cor1:
+            curva(45)
+            andar(10)
+            andar(-10)
+            curva(-45)
+            segueAte(Color.GREEN)
+            andar(-13)
         
+        else:
+            andar(30)
+            andar(-15)
+            segueAte(Color.GREEN)
+            andar(-13)
+
 finally:
     print('O programa foi executado em: ', tempo.time()/1000, 's')
