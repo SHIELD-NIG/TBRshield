@@ -3,7 +3,6 @@ from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSenso
 from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
 from pybricks.robotics import GyroDriveBase
 from pybricks.tools import wait, StopWatch
-
 tempo      = StopWatch()
 hub        = PrimeHub()
 esquerdo   = Motor(Port.F, Direction.COUNTERCLOCKWISE)
@@ -13,18 +12,14 @@ sobe       = Motor(Port.D)
 mover      = GyroDriveBase(esquerdo, direito, 68.8, 113)
 sensoresq  = ColorSensor(Port.E)
 sensordir  = ColorSensor(Port.A)
-
-
 Color.YELLOW = Color(h=20,s=72,v=70)
 Color.RED    = Color(h=351,s=84,v=48)
 Color.GREEN  = Color(h=135,s=65,v=51)
 Color.NONE   = Color(h=210,s=22,v=22)
 Color.BLACK  = Color(h=330,s=17,v=15)
 Color.WHITE  = Color(h=208,s=27, v=88)
-
 sensoresq.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
 sensordir.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
-
 plaquetas = [Color.RED, Color.YELLOW]
 def seleciona(cor):
     if cor == Color.RED:
@@ -33,26 +28,19 @@ def seleciona(cor):
         return("G")
     if cor == Color.YELLOW:
         return("Y")  
-
 def andar(distancia, velocidade=240):
     mover.settings(velocidade, 900, 203, 913)
     mover.straight(distancia*10)
-
 def curva(graus):
     mover.turn(graus)
-
 def subir():
     sobe.run_time(10000,850,)
-
 def descer():
     sobe.run_time(-1000, 850,)
-
 def abre():
     garra.run_time(350, 1000)
-
 def fecha():
      garra.run_time(-1000, 1000)
-
 def segueAte(cor, velocidade=200):
     while (sensordir.color() != cor) and (sensoresq.color() != cor):
         mover.drive(velocidade, 0)
@@ -64,48 +52,37 @@ try:
     subir()
     andar(-68,350)
     curva(-90)
-
     cores = [Color.RED, Color.GREEN, Color.YELLOW]
-
     while (sensordir.color() not in cores) and (sensoresq.color() not in cores):
         mover.drive(200,0)
     mover.stop()
     andar(1.3)
-
     if sensordir.color() not in cores:
         cor3 = seleciona(sensoresq.color())
     else:
         cor3 = seleciona(sensordir.color())
-
     andar(-3)
     curva(-90)
-
     while (sensordir.color() not in cores) and (sensoresq.color() not in cores):
         mover.drive(200,0)
     mover.stop()
     andar(1.3)
-
     if sensordir.color() not in cores:
         cor2 = seleciona(sensoresq.color())
     else:
         cor2 = seleciona(sensordir.color())
-
     if cor3 != 'G' and cor2 != 'G':
         cor1 = 'G'
     elif cor3 != 'Y' and cor2 != 'Y':
         cor1 = 'Y'
     elif cor3 != 'R' and cor2 != 'R':
         cor1 = 'R'
-
     sequencia = f'{cor1}{cor2}{cor3}'
     print(f'A sequência é {sequencia}') 
-
     andar(-70, 300 )
     curva(-90)
-
     # Início das rotinas
-
-    if sequencia == 'RGY':
+    if sequencia == 'RGY': 
         segueAte(Color.RED)
         andar(-6)
         descer()
@@ -137,7 +114,7 @@ try:
         curva(90)
         andar(40)
         curva(-90)
-        andar(34)
+        andar(37)
         curva(90)
         andar(20)
         descer()
@@ -226,7 +203,6 @@ try:
         andar(-35)
         curva(-90)
         andar(-150, 315)
-
     elif sequencia == 'GYR':
         segueAte(Color.RED)
         andar(-6)
@@ -291,7 +267,6 @@ try:
         andar(-35)
         curva(-90)
         andar(-150, 300)
-
     elif sequencia == 'YGR':
         segueAte(Color.RED)
         andar(-6)
@@ -345,7 +320,6 @@ try:
         andar(-35)
         curva(-90)
         andar(-150, 300)
-
     elif sequencia == 'RYG':
         segueAte(Color.RED)
         andar(-10)
@@ -405,7 +379,6 @@ try:
         andar(-35)
         curva(-90)
         andar(-150, 300)
-
     elif sequencia == 'YRG':
         segueAte(Color.RED)
         andar(-3)
@@ -461,8 +434,6 @@ try:
         andar(-30)
         curva(-90)
         andar(-150, 300)
-
-
     if sequencia == 'GRY' or sequencia == 'GYR':
         mover.reset()
         wait(300)
@@ -472,9 +443,9 @@ try:
         segueAte(Color.GREEN)
         andar(11)
         curva(90)
-        andar(28)
+        andar(23) # entrega de arvore
         curva(90)
-        andar(19)
+        andar(19) 
         mover.stop()
         mover.reset()
         descer()
@@ -485,7 +456,7 @@ try:
         curva(90)
         andar(23)
         curva(90)
-        andar(7.5)
+        andar(8.5) #lê plaquetas 
         sobe.run_time(-225,1400)
         curva(-45)
         andar(-9)
@@ -521,7 +492,6 @@ try:
         fecha()
         subir()
         sobe.run_time(-205,1100)
-
         if plaqueta == cor3:
             andar(79)
             andar(-20)
@@ -540,14 +510,13 @@ try:
             andar(-15)
             curva(-90)
             andar(16.5)
-            curva(-60)
+            curva(-63) # alarme direito
             andar(10)
             segueAte(Color.GREEN)
             andar(30)
             andar(-15)
             segueAte(Color.GREEN)
             andar(-13)
-
     if sequencia == 'RYG' or sequencia == 'YRG':
         mover.reset()
         wait(300)
@@ -614,7 +583,6 @@ try:
         curva(-60)
         andar(10)
         segueAte(Color.GREEN)
-
         if plaqueta == cor1:
             curva(45)
             andar(10)
@@ -712,7 +680,7 @@ try:
             curva(-60)
             andar(10)
             segueAte(Color.GREEN)
-        
+
         if plaqueta1 == cor1:
             curva(45)
             andar(13.5)
@@ -720,7 +688,7 @@ try:
             curva(-45)
             segueAte(Color.GREEN)
             andar(-13)
-        
+
         else:
             andar(30)
             andar(-15)
@@ -728,7 +696,7 @@ try:
             andar(-13)
 
 
-        
+
 
 
 
