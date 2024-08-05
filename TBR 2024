@@ -1,1 +1,165 @@
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor, ForceSensor
+from pybricks.parameters import Button, Color, Direction, Port, Side, Stop
+from pybricks.robotics import GyroDriveBase
+from pybricks.tools import wait, StopWatch
+
+tempo      = StopWatch()
+hub        = PrimeHub()
+esquerdo   = Motor(Port.F, Direction.COUNTERCLOCKWISE)
+direito    = Motor(Port.B)
+garra      = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+sobe       = Motor(Port.D)
+mover      = GyroDriveBase(esquerdo, direito, 68.8, 113)
+sensoresq  = ColorSensor(Port.E)
+sensordir  = ColorSensor(Port.A)
+checar     = False
+
+
+Color.YELLOW = Color(h=20,s=72,v=70)
+Color.RED    = Color(h=351,s=84,v=48)
+Color.GREEN  = Color(h=135,s=65,v=51)
+Color.NONE   = Color(h=210,s=22,v=22)
+Color.BLACK  = Color(h=330,s=17,v=15)
+Color.WHITE  = Color(h=208,s=27, v=88)
+
+sensoresq.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
+sensordir.detectable_colors((Color.WHITE, Color.BLACK, Color.NONE, Color.YELLOW, Color.RED, Color.GREEN))
+
+plaquetas = [Color.RED, Color.YELLOW]
+def seleciona(cor):
+    if cor == Color.RED:
+        return("R")
+    if cor == Color.GREEN:
+        return("G")
+    if cor == Color.YELLOW:
+        return("Y")  
+
+def andar(distancia, velocidade=240):
+    mover.settings(velocidade, 900, 203, 913)
+    mover.straight(distancia*10)
+
+def curva(graus):
+    mover.turn(graus)
+
+def subir():
+    sobe.run_time(10000,3000)
+
+def descer():
+    sobe.run_time(-1000, 800)
+
+def abre():
+    garra.run_time(350, 1000)
+
+def fecha():
+     garra.run_time(-1000, 1000)
+
+def segueAte(cor, velocidade=200):
+    while (sensordir.color() != cor) and (sensoresq.color() != cor):
+        mover.drive(velocidade, 0)
+    mover.stop()
+
+def achar_arvore1(cor):
+    print(sensordir.color())
+    if (sensordir.color() == cor):
+        andar(-10)
+        curva(-17)
+        sobe.run_time(-1000, 400)
+        andar(10)
+        fecha()
+        sobe.run_time(1000, 500)
+        andar(-10)
+        curva(111)
+        andar(15)
+        mover.stop()
+        andar(-9)
+        descer()
+        abre()
+        andar(-4)
+        subir()
+        curva(-90)
+        andar(10)
+        descer()
+        fecha()
+        subir()
+        curva(90)
+        andar(3)
+        mover.stop()
+        descer()
+        abre()
+        
+
+    
+        
+
+    else:
+        andar(-10)
+        curva(12)
+        sobe.run_time(-350,550,)
+        andar(11)
+        curva(-12)
+        fecha()
+        sobe.run_time(1000,720,)
+        andar(-11)
+        curva(90)
+        andar(15)
+        mover.stop()
+        andar(-9)
+        descer()
+        abre()
+        
+def garra_até(velocidade, graus):
+    sobe.run_target(velocidade, graus)
+    garra.hold()
+
+def centro():
+    print(sensordir.color())
+    centro == print
+
+
+
+    
+
+
+    
+
+
+           
+        
+
+
+    
+
+
+# inicio da programação
+
+#achar_arvore(Color.RED)
+
+#garra_até(300, 380) #garra em altura máxima
+#descer()
+#garra_até(300, 300) #garra em altura média
+#sobe.run_time(10000,550,) #vamos usar esse!!!!!
+#andar(5)
+
+#
+
+#sobe.run_time(10000,520,) #altura mais que perfeita para a árvore
+#andar(9)
+
+andar(10)
+curva(-45)
+andar(51)
+curva(-90)
+sobe.run_time(-150,550,)
+andar(3)
+achar_arvore1(Color.GREEN)
+sobe.run_time(375,550,)
+andar(-25)
+sobe.run_time(-375,550,)
+curva(-90)
+andar(-57)
+curva(180)
+sobe.run_time(375,550,)
+
+
 
