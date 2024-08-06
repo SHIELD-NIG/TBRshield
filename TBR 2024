@@ -116,6 +116,25 @@ def centro():
     print(sensordir.color())
     centro == print
 
+def lercentro():
+    print(sensordir.color())
+    if (sensordir.color() == Color.BLACK or Color.RED or Color.NONE):
+        if (sensordir.color() == Color.BLACK or Color.NONE):
+            andar(-10)
+            curva(-90)
+            sobe.run_time(3000, 600,)
+            andar(21)
+            curva(-90)
+            andar(6)
+            if (sensordir.color() == Color.BLACK or Color.NONE):
+                andar(5)
+                sobe.run_time(-2000, 600,)
+                andar(-3)
+                sobe.run_time(2000, 600,)
+            else:
+                andar(15)  
+
+
 
 
     
@@ -145,21 +164,30 @@ def centro():
 
 #sobe.run_time(10000,520,) #altura mais que perfeita para a árvore
 #andar(9)
-
+'''
 andar(10)
 curva(-45)
 andar(51)
 curva(-90)
 sobe.run_time(-150,550,)
 andar(3)
-achar_arvore1(Color.GREEN)
+achar_arvore1(Color.GREEN) #fim da missão arvore
 sobe.run_time(375,550,)
 andar(-25)
 sobe.run_time(-375,550,)
 curva(-90)
-andar(-57)
+andar(-57) #passou a rampa
 curva(180)
 sobe.run_time(375,550,)
+'''
+sobe.run_time(375,550,)
+andar(6)
+lercentro()
 
 
+
+
+
+finally:
+    print('O programa foi executado em: ', tempo.time()/1000, 's')
 
